@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: tasklist-dev
+  labels:
+    gitops.openshift.io/controllerNamespace: gitops
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: tasklist-dev
+    server: https://kubernetes.default.svc
+  project: tasklist
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: false
+  source:
+    path: clusters/rhds/overlays/dev
+    repoURL: https://github.com/jmetso/tasklist-cicd
+    targetRevision: main

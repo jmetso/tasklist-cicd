@@ -1,0 +1,21 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: tasklist
+  labels:
+    app: tasklist
+    app.kubernetes.io/name: tasklist
+    app.kubernetes.io/component: server
+    app.kubernetes.io/instance: server
+    endpoint: tasklist
+  annotations:
+    argocd.argoproj.io/sync-wave: "100"
+spec:
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
+  port:
+    targetPort: http
+  to:
+    kind: Service
+    name: tasklist
