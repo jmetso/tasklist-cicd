@@ -5,6 +5,8 @@ namespace: tasklist-dev
 
 resources:
 - ../../../components/apps/tasklist/base
+- ../../../components/apps/database/base
+
 patchesJson6902:
 - target:
     kind: Deployment
