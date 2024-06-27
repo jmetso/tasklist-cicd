@@ -96,7 +96,7 @@ spec:
     - name: bake
       params:
         - name: IMAGE
-          value: 'tasklist-dev/tasklist:latest'
+          value: 'image-registry.openshift-image-registry.svc:5000/tasklist-cicd/tasklist-dev:latest'
         - name: BUILDER_IMAGE
           value: 'registry.redhat.io/rhel8/buildah@sha256:55f5c7d88c77e1ab5a2ab8e877172b2b66cb196e21f10dc45148470d0ee8bbae'
         - name: STORAGE_DRIVER
