@@ -15,7 +15,14 @@ spec:
     automated:
       selfHeal: true
       prune: false
+    syncOptions:
+    - CreateNamespace=true
+    managedNamespaceMetadata:
+      labels:
+        app: tasklist
+        env: dev
+        argocd.argoproj.io/managed-by: user1-argocd
   source:
-    path: clusters/rhds/overlays/dev
+    path: gitops/clusters/overlays/rhds/dev
     repoURL: https://github.com/jmetso/tasklist-cicd
     targetRevision: main
