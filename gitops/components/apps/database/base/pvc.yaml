@@ -1,0 +1,17 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "100"
+  name: postgresql
+  finalizers:
+    - kubernetes.io/pvc-protection
+  labels:
+    app: tasklist
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  volumeMode: Filesystem
