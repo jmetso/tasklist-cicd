@@ -60,6 +60,7 @@ spec:
         - name: GOALS
           value:
             - '-DskipTests=true'
+            - clean
             - package
         - name: MAVEN_MIRROR_URL
           value: ''
