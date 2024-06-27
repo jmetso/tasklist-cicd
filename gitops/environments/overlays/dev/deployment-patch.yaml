@@ -1,5 +1,38 @@
 - op: add
   path: /spec/template/spec/containers/0/env/-
   value:
+    name: POSTGRESQL_USER
+    valueFrom:
+      secretKeyRef:
+        name: postgresql
+        key: database-user
+
+- op: add
+  path: /spec/template/spec/containers/0/env/-
+  value:
+    name: POSTGRESQL_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: postgresql
+        key: database-password
+
+- op: add
+  path: /spec/template/spec/containers/0/env/-
+  value:
+    name: POSTGRESQL_DATABASE
+    valueFrom:
+      secretKeyRef:
+        name: postgresql
+        key: database-name
+
+- op: add
+  path: /spec/template/spec/containers/0/env/-
+  value:
+    name: JAVA_ARGS
+    value: '--spring.profiles.active=dev'
+
+- op: add
+  path: /spec/template/spec/containers/0/env/-
+  value:
     name: JAVA_OPTS_APPEND
-    value: ' --spring.profiles.active=dev'
+    value: '-DDB_URL=jdbc:postgreqsql://$(POSTGRESQL_USER):$(POSTGRESQL_PASSWORD)@postgresql:5432/$(POSTGRESQL_DATABASE)'
