@@ -1,0 +1,24 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: tasklist-maven-settings
+immutable: false
+data:
+  settings.xml: |-
+    <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 https://maven.apache.org/xsd/settings-1.0.0.xsd">
+      <mirrors>
+        <mirror>
+          <id>redhat.com/ga</id>
+          <name>Red Hat GA</name>
+          <url>https://maven.repository.redhat.com/ga/</url>
+          <mirrorOf>central</mirrorOf>
+        </mirror>
+        <mirror>
+          <id>redhat.com/ea</id>
+          <name>Red Hat Early Access</name>
+          <url>https://maven.repository.redhat.com/earlyaccess/all/</url>
+          <mirrorOf>central</mirrorOf>
+        </mirror>
+      </mirrors>
+    </settings>
