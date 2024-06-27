@@ -5,3 +5,9 @@ namespace: tasklist-dev
 
 resources:
 - ../../../components/apps/tasklist/base
+patchesJson6902:
+- target:
+    kind: Deployment
+    version: apps/v1
+    name: tasklist
+  path: deployment-patch.yaml
