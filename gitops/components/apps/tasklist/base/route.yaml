@@ -9,7 +9,7 @@ metadata:
     app.kubernetes.io/instance: server
     endpoint: tasklist
   annotations:
-    argocd.argoproj.io/sync-wave: "100"
+    argocd.argoproj.io/sync-wave: "200"
 spec:
   tls:
     termination: edge

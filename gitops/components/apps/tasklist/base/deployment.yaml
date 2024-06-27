@@ -5,7 +5,7 @@ metadata:
   annotations:
     app.openshift.io/connects-to: database
     app.openshift.io/vcs-uri: 'https://github.com/jmetso/tasklist-cicd'
-    argocd.argoproj.io/sync-wave: "100"
+    argocd.argoproj.io/sync-wave: "200"
   labels:
     app: tasklist
     app.kubernetes.io/name: server
