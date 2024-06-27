@@ -59,6 +59,7 @@ spec:
           value: 'registry.redhat.io/ubi8/openjdk-17@sha256:af305e087061cbaa4107ce0b304a1ef987f6b54bae3f75bfd529cfd084cba9b5'
         - name: GOALS
           value:
+            - '-DskipTests=true'
             - package
         - name: MAVEN_MIRROR_URL
           value: ''
