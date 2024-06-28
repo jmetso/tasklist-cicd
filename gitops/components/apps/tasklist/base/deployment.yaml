@@ -30,7 +30,7 @@ spec:
           image: >-
             image-registry.openshift-image-registry.svc:5000/tasklist-dev/tasklist:latest
           ports:
-            - containerPort: 8080
+            - containerPort: 8100
               protocol: TCP
           env:
           - name: POSTGRESQL_USER
