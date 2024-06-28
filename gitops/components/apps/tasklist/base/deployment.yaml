@@ -26,7 +26,7 @@ spec:
         name: tasklist
     spec:
       containers:
-        - name: server
+        - name: app
           image: >-
             image-registry.openshift-image-registry.svc:5000/tasklist-dev/tasklist:latest
           ports:
@@ -43,6 +43,12 @@ spec:
               path: /actuator/health/readiness
               port: 9100
             initialDelaySeconds: 5
+            periodSeconds: 15
+          startupProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: 9100
+            failureTreshold: 5
             periodSeconds: 15
           env:
           - name: POSTGRESQL_USER
