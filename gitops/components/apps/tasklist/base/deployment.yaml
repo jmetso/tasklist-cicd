@@ -32,6 +32,18 @@ spec:
           ports:
             - containerPort: 8100
               protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: 9100
+            initialDelaySeconds: 3
+            periodSeconds: 3
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: 9100
+            initialDelaySeconds: 5
+            periodSeconds: 15
           env:
           - name: POSTGRESQL_USER
             valueFrom:
