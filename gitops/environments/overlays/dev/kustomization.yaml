@@ -9,7 +9,7 @@ resources:
 
 patchesJson6902:
 - target:
-    kind: Deployment
-    version: apps/v1
-    name: tasklist
-  path: deployment-patch.yaml
+    kind: ConfigMap
+    version: v1
+    name: tasklist-config
+  path: tasklist-config-patch.yaml

@@ -1,0 +1,3 @@
+- op: replace
+  path: /data/JAVA_ARGS
+  value: '--spring.profiles.active=dev'
