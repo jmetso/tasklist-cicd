@@ -49,16 +49,26 @@ spec:
                 name: postgresql
                 key: database-name
           - name: JAVA_OPTS_APPEND
-            value: '-DDB_URL=jdbc:postgresql://postgresql:5432/$(POSTGRESQL_DATABASE)?user=$(POSTGRESQL_USER)&password=$(POSTGRESQL_PASSWORD)'
+            value: '-DDB_URL=jdbc:postgresql://postgresql:5432/$(POSTGRESQL_DATABASE)?user=$(POSTGRESQL_USER)&password=$(POSTGRESQL_PASSWORD) -DCONFIG_FILE=/opt/config/tasklist.properties'
           - name: JAVA_ARGS
             valueFrom:
               configMapKeyRef:
                 name: tasklist-config
                 key: JAVA_ARGS
+          volumeMounts:
+          - name: config-volume
+            mountPath: /opt/config
           resources: {}
           terminationMessagePath: /dev/termination-log
           terminationMessagePolicy: File
           imagePullPolicy: Always
+      volumes:
+        - name: config-volume
+          configMap:
+            name: tasklist-config
+            items:
+            - key: tasklist.properties
+              path: tasklist.properties
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
       dnsPolicy: ClusterFirst
