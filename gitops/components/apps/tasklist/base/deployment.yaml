@@ -37,17 +37,17 @@ spec:
             valueFrom:
               secretKeyRef:
                 name: postgresql
-                key: database-user1
+                key: database-user
           - name: POSTGRESQL_PASSWORD
             valueFrom:
               secretKeyRef:
                 name: postgresql
-                key: database-password1
+                key: database-password
           - name: POSTGRESQL_DATABASE
             valueFrom:
               secretKeyRef:
                 name: postgresql
-                key: database-name1
+                key: database-name
           - name: JAVA_OPTS_APPEND
             value: '-DDB_URL=jdbc:postgreqsql://$(POSTGRESQL_USER):$(POSTGRESQL_PASSWORD)@postgresql:54321/$(POSTGRESQL_DATABASE)'
           - name: JAVA_ARGS
