@@ -6,3 +6,4 @@ resources:
   - route.yaml
   - deployment.yaml
   - imagestream.yaml
+  - configmap.yaml

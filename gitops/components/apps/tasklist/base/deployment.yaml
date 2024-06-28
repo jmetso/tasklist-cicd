@@ -26,13 +26,35 @@ spec:
         name: tasklist
     spec:
       containers:
-        - name: container
+        - name: server
           image: >-
             image-registry.openshift-image-registry.svc:5000/tasklist-dev/tasklist:latest
           ports:
             - containerPort: 8080
               protocol: TCP
-          env: {}
+          env:
+          - name: POSTGRESQL_USER
+            valueFrom:
+              secretKeyRef:
+                name: postgresql
+                key: database-user1
+          - name: POSTGRESQL_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: postgresql
+                key: database-password1
+          - name: POSTGRESQL_DATABASE
+            valueFrom:
+              secretKeyRef:
+                name: postgresql
+                key: database-name1
+          - name: JAVA_OPTS_APPEND
+            value: '-DDB_URL=jdbc:postgreqsql://$(POSTGRESQL_USER):$(POSTGRESQL_PASSWORD)@postgresql:54321/$(POSTGRESQL_DATABASE)'
+          - name: JAVA_ARGS
+            valueFrom:
+              configMapKeyRef:
+                name: tasklist-config
+                key: JAVA_ARGS
           resources: {}
           terminationMessagePath: /dev/termination-log
           terminationMessagePolicy: File
