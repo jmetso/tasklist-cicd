@@ -4,3 +4,4 @@ kind: Kustomization
 images:
 resources:
 - ../../../../environments/overlays/dev
+- rb-pipeline.yaml
