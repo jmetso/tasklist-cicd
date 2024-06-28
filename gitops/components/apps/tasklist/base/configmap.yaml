@@ -6,4 +6,9 @@ metadata:
     app: tasklist
 data:
   JAVA_ARGS:
-  
+  tasklist.properties: |-
+    smtp.host=
+    smtp.port=
+    smtp.from=
+    smtp.username=
+    smtp.password=
