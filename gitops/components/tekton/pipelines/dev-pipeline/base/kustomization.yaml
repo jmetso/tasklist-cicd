@@ -3,7 +3,6 @@ kind: Kustomization
 
 resources:
   - dev-pipeline.yaml
-  - cm-tasklist-mvn-settings.yaml
   - imagestream.yaml
   - pvc-tasklist-dev-src.yaml
   - pvc-tasklist-mvn-cache.yaml
