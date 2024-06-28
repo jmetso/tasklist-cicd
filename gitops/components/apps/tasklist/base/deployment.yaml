@@ -49,7 +49,7 @@ spec:
                 name: postgresql
                 key: database-name
           - name: JAVA_OPTS_APPEND
-            value: '-DDB_URL=jdbc:postgreqsql://$(POSTGRESQL_USER):$(POSTGRESQL_PASSWORD)@postgresql:54321/$(POSTGRESQL_DATABASE)'
+            value: '-DDB_URL=jdbc:postgreqsql://postgresql:54321/$(POSTGRESQL_DATABASE)?user=$(POSTGRESQL_USER)&password=$(POSTGRESQL_PASSWORD)'
           - name: JAVA_ARGS
             valueFrom:
               configMapKeyRef:
