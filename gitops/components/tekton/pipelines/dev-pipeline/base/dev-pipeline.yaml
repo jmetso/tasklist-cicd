@@ -93,7 +93,7 @@ spec:
         - name: source
           workspace: source
         - name: maven-settings
-          workspace: maven-cache
+          workspace: maven-settings
     - name: bake
       params:
         - name: IMAGE
@@ -144,6 +144,48 @@ spec:
       workspaces:
         - name: images-url
           workspace: source
+    - name: integration test
+      params:
+        - name: MAVEN_IMAGE
+          value: 'registry.redhat.io/ubi8/openjdk-17@sha256:af305e087061cbaa4107ce0b304a1ef987f6b54bae3f75bfd529cfd084cba9b5'
+        - name: GOALS
+          value:
+            - '-DTARGET_HOST=tasklist.tasklist-dev'
+            - '-DTARGET_PORT=8100'
+            - -Pintegration-test
+            - verify
+        - name: MAVEN_MIRROR_URL
+          value: ''
+        - name: SERVER_USER
+          value: ''
+        - name: SERVER_PASSWORD
+          value: ''
+        - name: PROXY_USER
+          value: ''
+        - name: PROXY_PASSWORD
+          value: ''
+        - name: PROXY_PORT
+          value: ''
+        - name: PROXY_HOST
+          value: ''
+        - name: PROXY_NON_PROXY_HOSTS
+          value: ''
+        - name: PROXY_PROTOCOL
+          value: http
+        - name: CONTEXT_DIR
+          value: .
+      runAfter:
+        - skopeo-copy
+      taskRef:
+        kind: Task
+        name: maven
+      workspaces:
+        - name: maven-local-repo
+          workspace: maven-cache
+        - name: source
+          workspace: source
+        - name: maven-settings
+          workspace: maven-cache
   workspaces:
     - name: source
     - name: maven-cache
