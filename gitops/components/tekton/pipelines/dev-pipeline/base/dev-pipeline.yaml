@@ -190,4 +190,3 @@ spec:
     - name: source
     - name: maven-cache
     - name: maven-settings
-      optional: true
