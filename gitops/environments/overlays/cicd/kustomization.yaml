@@ -5,5 +5,5 @@ namespace: tasklist-cicd
 
 resources:
 - ../../../components/tekton/pipelines/dev-pipeline/base
-- ../../../components/tekton/tasks/base/maven.yaml
+- ../../../components/tekton/tasks/base
 - cm-tasklist-mvn-settings.yaml
