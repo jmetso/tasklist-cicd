@@ -10,4 +10,6 @@ See [ansible/install.yaml](ansible/install.yaml). The playbook is described in t
 
 See [ansible/uninstall.yml](ansible/uninstall.yml). The playbook is described in the [ansible/README.md](ansible/README.md) file.
 
+## GitOps
 
+GitOps based configuration in [gitops](gitops) folder.
