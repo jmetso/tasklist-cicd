@@ -1,0 +1,29 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: tasklist-dev-init-run
+  namespace: tasklist-cicd
+  finalizers:
+    - chains.tekton.dev/pipelinerun
+  labels:
+    tekton.dev/pipeline: tasklist-dev-pipeline
+spec:
+  params:
+    - name: repository
+      value: 'https://github.com/jmetso/tasklist.git'
+    - name: branch
+      value: develop
+  pipelineRef:
+    name: tasklist-dev-pipeline
+  serviceAccountName: pipeline
+  timeout: 1h0m0s
+  workspaces:
+    - name: source
+      persistentVolumeClaim:
+        claimName: tasklist-dev-src
+    - name: maven-cache
+      persistentVolumeClaim:
+        claimName: tasklist-mvn-cache
+    - configMap:
+        name: tasklist-maven-settings
+      name: maven-settings
