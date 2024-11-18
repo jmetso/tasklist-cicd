@@ -7,6 +7,8 @@ metadata:
     - chains.tekton.dev/pipelinerun
   labels:
     tekton.dev/pipeline: tasklist-dev-pipeline
+  annotations:
+    argocd.argoproj.io/sync-wave: "200"
 spec:
   params:
     - name: repository

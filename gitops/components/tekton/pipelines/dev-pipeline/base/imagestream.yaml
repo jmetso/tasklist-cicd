@@ -4,3 +4,5 @@ metadata:
   name: tasklist-dev
   labels:
     app: tasklist
+  annotations:
+    argocd.argoproj.io/sync-wave: "100"

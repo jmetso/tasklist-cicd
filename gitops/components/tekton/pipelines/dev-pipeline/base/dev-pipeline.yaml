@@ -2,6 +2,8 @@ apiVersion: tekton.dev/v1
 kind: Pipeline
 metadata:
   name: tasklist-dev-pipeline
+  annotations:
+    argocd.argoproj.io/sync-wave: "100"
 spec:
   params:
     - default: 'https://github.com/jmetso/tasklist.git'
