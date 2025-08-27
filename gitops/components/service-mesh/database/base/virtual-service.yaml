@@ -1,13 +1,14 @@
-apiVersion: networking.istio.io/v1
+apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  name: reviews-route
+  name: tasklist-postgresql
 spec:
   hosts:
     - PATCH_THIS
   tcp:
-    - name: "database-v1"
+    - name: "tasklist-database-v1"
       route:
         - destination:
             host: PATCH_THIS
             subset: v1
+          weight: 100
