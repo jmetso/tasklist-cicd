@@ -1,13 +1,20 @@
-apiVersion: networking.istio.io/v1
+apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
   name: tasklist
 spec:
+  gateways:
+    - tasklist
   hosts:
     - PATCH_THIS
   http:
-    - name: "tasklist-v1"
+    - match:
+        - port: 80
+      name: http-80
       route:
         - destination:
             host: PATCH_THIS
+            port:
+              number: 8100
             subset: v1
+          weight: 100
