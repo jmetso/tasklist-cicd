@@ -1,16 +1,14 @@
-apiVersion: networking.istio.io/v1
+apiVersion: networking.istio.io/v1beta1
 kind: Gateway
 metadata:
   name: tasklist
 spec:
   selector:
-    istio: ingress-controller
+    istio: ingressgateway
   servers:
     - port:
         number: 80
         name: http-80
         protocol: HTTP
       hosts:
-        - PATCH_THIS # override this with cluster values
-      tls:
-        httpsRedirect: true # sends 301 redirect for http requests
+        - patch.this # override this with cluster values
