@@ -1,0 +1,16 @@
+#[
+#  { "op":  "add", "path":  "/metadata/labels/version", "value": "v1" },
+#  { "op":  "add", "path":  "/spec/template/metadata/labels/version", "value":  "v1"},
+#  { "op":  "add", "path":  "/spec/template/metadata/annotations/sidecar."}
+#]
+- op: replace
+  path: /metadata/labels/version
+  value: "v1"
+
+- op: replace
+  path: /spec/template/metadata/labels/version
+  value: "v1"
+
+- op: replace
+  path: /spec/template/metadata/annotations/sidecar.istio.io\/inject
+  value: "true"

@@ -1,0 +1,13 @@
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata:
+  name: tasklist
+spec:
+  hosts:
+    - PATCH_THIS
+  http:
+    - name: "tasklist-v1"
+      route:
+        - destination:
+            host: PATCH_THIS
+            subset: v1

@@ -1,0 +1,13 @@
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata:
+  name: reviews-route
+spec:
+  hosts:
+    - PATCH_THIS
+  tcp:
+    - name: "database-v1"
+      route:
+        - destination:
+            host: PATCH_THIS
+            subset: v1
