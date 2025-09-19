@@ -1,0 +1,17 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: rhbk
+
+resources:
+  - https://github.com/jmetso/rhbk-gitops.git//environments/overlays/prd
+  - keycloakrealmimport-tasklist.yaml
+
+patches:
+  - target:
+      kind: Keycloak
+      group: k8s.keycloak.org
+      name: keycloak
+    path: patch-keycloak.yaml
+
+

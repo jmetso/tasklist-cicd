@@ -1,0 +1,10 @@
+apiVersion: k8s.keycloak.org/v2alpha1
+kind: KeycloakRealmImport
+metadata:
+  name: apps-realm
+spec:
+  keycloakCRName: keycloak
+  realm:
+    id: de2e07a3-2d66-45a2-9f0e-c4f240835af3
+    realm: apps
+    enabled: true

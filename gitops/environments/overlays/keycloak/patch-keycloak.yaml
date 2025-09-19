@@ -1,0 +1,13 @@
+- op: replace
+  path: /spec/instances
+  value: 1
+
+- op: replace
+  path: /spec/resources
+  value:
+    requests:
+      cpu: 200m
+      memory: 521Mi
+    limits:
+      cpu: 1
+      memory: 1Gi
